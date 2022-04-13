@@ -1,4 +1,5 @@
-# POKEDEX
+# ![image](https://user-images.githubusercontent.com/93095117/163077667-50fe1183-42c3-401f-9479-9868c37aef0c.png)
+POKEDEX
 
 Nome dos integrantes: 
 - Pessoa 1
