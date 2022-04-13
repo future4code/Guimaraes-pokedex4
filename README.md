@@ -1,5 +1,5 @@
-# ![image](https://user-images.githubusercontent.com/93095117/163077667-50fe1183-42c3-401f-9479-9868c37aef0c.png)
-POKEDEX
+![logo](https://user-images.githubusercontent.com/83131771/163080427-decc333c-04ae-4654-a8fc-11b31fc20029.png)
+
 
 Nome dos integrantes: 
 - Pessoa 1
