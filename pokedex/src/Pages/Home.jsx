@@ -6,7 +6,8 @@ import Button from 'react-bootstrap/Button'
 import pokemons from '../assets/pokemons.png'
 import styled from "styled-components"
 import { useNavigate } from 'react-router-dom'
-
+import { useContext } from 'react'
+import axios from 'axios'
 const ContainerHome = styled.div `
     height: 100vh;
     background-color: #ffcc00;
@@ -14,7 +15,17 @@ const ContainerHome = styled.div `
 
 
 const Home = () => {
-
+    // const pokemon = useContext(Home);
+    // console.log(pokemon)
+    const getArrayPokemons=()=>{
+        axios
+        .get(`https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0`)
+        .then((res)=>{
+          console.log(res.data.results) 
+        })
+        .catch((err)=>console.log((err)))
+    }
+    getArrayPokemons()
     const navigate = useNavigate()
     const goToPokedex = () => {
       navigate('pokedex')
