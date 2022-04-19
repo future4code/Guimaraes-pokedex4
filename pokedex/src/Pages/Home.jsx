@@ -13,6 +13,17 @@ const ContainerHome = styled.div `
     height: 100vh;
     background-color: #ffcc00;
 `
+const Img = styled.img`
+    @media(max-width: 1047px) {
+    width: 400px;;
+  };
+  @media(max-width: 852px) {
+    width: 350px;;
+  };
+  @media(max-width: 414px) {
+   width: 200px;;
+  }
+`
 
 
 const Home = () => {
@@ -28,16 +39,16 @@ const Home = () => {
             <Row className="justify-content-md-center align-items-center">
             <Col>
             <h1>Capture Seus Pokémons Preferidos </h1>
-            <p>Vocẽ não precisa mais sair de casa para capturar pokémon,
-                com o pokédex você pode saber o tipo, poderes e principais ataques 
-                do pokémon e armazená-lo em sua pokebola.</p>
+                <p>Com o pokédex você pode saber o tipo, poderes e principais ataques 
+                do pokémon e armazená-lo em sua pokebola. <br></br>
+                Vem comigo vamos formar sempre a melhor equipe. E sempre juntos vamos vencer!</p>
 
             <Button variant="danger"
             onClick={goToPokedex}>Iniciar Jogo</Button>
             
             </Col>
             <Col xs={6} className="align-itema-center">
-            <img src={pokemons}/>
+            <Img  src={pokemons}/>
             </Col>
             </Row>
             </Container>
