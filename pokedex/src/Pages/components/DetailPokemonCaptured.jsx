@@ -4,24 +4,10 @@ import Button from 'react-bootstrap/Button'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import ProgressBar from 'react-bootstrap/ProgressBar'
-import pokebollget from '../assets/pokebollget.png'
 import styled from "styled-components"
 
-const Img = styled.img`
-width: 120px;  
-&:hover{
-  animation: float 3s ease-out infinite;
 
-@keyframes float {
-  50% {
-     transform: translate(0, 20px);
-  }
-}
-}
-
-`
-
-const DetailPokemon = (props) => {
+const DetailPokemonCaptured = (props) => {
     return(
         <Modal
         {...props}
@@ -74,11 +60,9 @@ const DetailPokemon = (props) => {
         
             
         </Row>
-        <p className="text-center">
-        <Img className="mt-3"src={pokebollget}/></p>
         
         </Modal.Body>
       </Modal>
     )
 }
-export default DetailPokemon
+export default DetailPokemonCaptured

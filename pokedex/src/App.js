@@ -3,6 +3,7 @@ import Router from './Routes/Router'
 import NavBar from'./Pages/components/NavBar'
 
 
+
 function App() {
   return (
     <div>
