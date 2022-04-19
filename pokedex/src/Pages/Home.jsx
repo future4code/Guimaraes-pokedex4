@@ -6,7 +6,9 @@ import Button from 'react-bootstrap/Button'
 import pokemons from '../assets/pokemons.png'
 import styled from "styled-components"
 import { useNavigate } from 'react-router-dom'
-
+import { useContext } from 'react'
+import axios from 'axios'
+import {useGlobalContext} from '../context'
 const ContainerHome = styled.div `
     height: 100vh;
     background-color: #ffcc00;
@@ -25,7 +27,8 @@ const Img = styled.img`
 
 
 const Home = () => {
-
+    const {pokemonsLivres, setPokemonsLivres}= useGlobalContext()
+     
     const navigate = useNavigate()
     const goToPokedex = () => {
       navigate('pokedex')
