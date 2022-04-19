@@ -1,11 +1,11 @@
 import React, {useState}  from 'react'
-import { useNavigate} from 'react-router-dom'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Card from 'react-bootstrap/Card'
 import pokeboll from '../../assets/pokeboll.png'
 import styled from "styled-components"
-import DetailPokemon from '../DetailPokemon'
+import DetailPokemonCaptured from './DetailPokemonCaptured'
+import {GoTrashcan} from 'react-icons/go';
 
 const Img = styled.img`
 width: 80px;    
@@ -23,12 +23,8 @@ animation: spin 2s infinite;
 }
 `
 
-const CardPokeList = () => {
+const CardListCaptured = () => {
 
-    const navigate = useNavigate()
-    const goToDetails = () => {
-      navigate('/detail/pokemon')
-    }
 
     const [modalShow, setModalShow] = React.useState(false);
 
@@ -39,9 +35,15 @@ const CardPokeList = () => {
             <Col className="m-3">
 
             <Card
-             style={{ width: '18rem', background: `linear-gradient(190deg, rgba(255,204,0)10%, rgba(197,49,42, 0.80) 100%)`}}
-            className=" justify-content-center align-items-center shadow border-0">
-            <Card.Body>
+             style={{ width: '18rem', background: `linear-gradient(190deg, rgba(255,204,0)30%, rgba(197,49,42, 0.80) 100%)`}}
+            className="shadow border-0">
+            <Card.Header className="border-0 "
+            style={{ width: '18rem', background: `rgba(255,204,0)`}}>
+                <p className="text-end">
+                    <GoTrashcan/>
+                </p>
+            </Card.Header>
+            <Card.Body className=" d-flex flex-column justify-content-center align-items-center">
             <Card.Title className="text-dark">Nome do Pokemon</Card.Title>
             <img src="https://www.pngmart.com/files/2/Pikachu-PNG-Transparent-Image.png"
             style={{ width: '10rem' }}
@@ -53,7 +55,7 @@ const CardPokeList = () => {
             </p>
 
 
-            <DetailPokemon
+            <DetailPokemonCaptured
             show={modalShow}
             onHide={() => setModalShow(false)}
             />
@@ -66,4 +68,4 @@ const CardPokeList = () => {
   
     )
 }
-export default CardPokeList
+export default CardListCaptured

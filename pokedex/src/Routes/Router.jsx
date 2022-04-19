@@ -4,6 +4,7 @@ import Home from '../Pages/Home'
 import Pokedex from '../Pages/Pokedex'
 import DetailPokemon from '../Pages/DetailPokemon'
 import PokemonSaved from '../Pages/PokemonSaved'
+import ErrorPage from '../Pages/ErrorPage'
 
 const Router = () => {
     return (
@@ -11,8 +12,9 @@ const Router = () => {
             <Routes>
                 <Route  path='/' index element ={<Home />} />
                 <Route path='pokedex' element={<Pokedex />} />
-                <Route path='detail/pokemon' element={<DetailPokemon />} />
-                <Route path = 'pokemon/saved' element={<PokemonSaved />}/>
+                <Route path='/detail/pokemon' element={<DetailPokemon />} />
+                <Route path = '/pokemon/saved' element={<PokemonSaved />}/>
+                <Route path = '*' element={<ErrorPage />}/>
             </Routes>
         </BrowserRouter>
     )

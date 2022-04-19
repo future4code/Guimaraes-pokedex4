@@ -19,7 +19,7 @@ const Pokedex = () => {
 
     const navigate = useNavigate()
     const goToPokemonSaved = () => {
-      navigate('pokemon/saved')
+      navigate('/pokemon/saved')
     }
 
     const goToHome = () => {
