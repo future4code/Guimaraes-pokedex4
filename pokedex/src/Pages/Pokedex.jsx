@@ -38,7 +38,7 @@ const Pokedex = () => {
             overlay={<Tooltip id="button-tooltip-2">
             Voltar para a Home</Tooltip>}>
             {({ ref, ...triggerHandler }) => (
-            <button class="btn btn-outline-dark" ref={ref}
+            <button className="btn btn-outline-dark" ref={ref}
             {...triggerHandler}
             onClick={goToHome}>
             <AiFillHome/>
@@ -50,7 +50,7 @@ const Pokedex = () => {
             overlay={<Tooltip id="button-tooltip-2">
              Abrir a Pokebola</Tooltip>}>
             {({ ref, ...triggerHandler }) => (
-            <button class="btn btn-outline-dark" ref={ref}
+            <button className="btn btn-outline-dark" ref={ref}
             {...triggerHandler}
              onClick={goToPokemonSaved}><CgPokemon/>
             </button>)}

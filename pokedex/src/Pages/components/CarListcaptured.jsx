@@ -40,7 +40,9 @@ const CardListCaptured = () => {
             <Card.Header className="border-0 "
             style={{ width: '18rem', background: `rgba(255,204,0)`}}>
                 <p className="text-end">
+                <button className="btn btn-outline-dark">
                     <GoTrashcan/>
+                    </button>
                 </p>
             </Card.Header>
             <Card.Body className=" d-flex flex-column justify-content-center align-items-center">
