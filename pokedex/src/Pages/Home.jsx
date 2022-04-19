@@ -26,6 +26,7 @@ const Home = () => {
         .catch((err)=>console.log((err)))
     }
     getArrayPokemons()
+    
     const navigate = useNavigate()
     const goToPokedex = () => {
       navigate('pokedex')
