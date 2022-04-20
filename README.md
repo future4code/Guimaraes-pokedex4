@@ -2,9 +2,9 @@
 
 
 Nome dos integrantes: 
-- Pessoa 1
-- Pessoa 2
-- Pessoa 3
+- Ana Carolina Kazue Inada
+- Thalita César
+- Patrícia Quarezemin
 
 Link do Surge: www.link.com.br
 
