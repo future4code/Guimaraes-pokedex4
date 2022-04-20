@@ -1,4 +1,4 @@
-              ![logo](https://user-images.githubusercontent.com/83131771/163080427-decc333c-04ae-4654-a8fc-11b31fc20029.png)
+![logo](https://user-images.githubusercontent.com/83131771/163080427-decc333c-04ae-4654-a8fc-11b31fc20029.png)
 
 
 Nome dos integrantes: 
