@@ -36,10 +36,13 @@ const CardPokeList = () => {
 
     return(
         <Row className="p-5">
-            <Col className="m-3">
+
+
+            <Col className="m-3 mb-5">
 
             <Card
-             style={{ width: '18rem', background: `linear-gradient(190deg, rgba(255,204,0)10%, rgba(197,49,42, 0.80) 100%)`}}
+             style={{ width: '18rem', background: `linear-gradient(190deg, rgba(255,204,0)10%,
+              rgba(197,49,42, 0.80) 100%)`}}
             className=" justify-content-center align-items-center shadow border-0">
             <Card.Body>
             <Card.Title className="text-dark">Nome do Pokemon</Card.Title>

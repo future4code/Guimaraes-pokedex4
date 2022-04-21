@@ -9,7 +9,6 @@ import { useNavigate } from 'react-router-dom'
 
 const ContainerHome = styled.div `
     height: 100vh;
-    background-color: #ffcc00;
 `
 const Img = styled.img`
     @media(max-width: 1047px) {

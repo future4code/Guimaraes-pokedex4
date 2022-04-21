@@ -9,8 +9,7 @@ import { CgPokemon} from 'react-icons/cg';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 
 const ContainerPokedex = styled.div `
-    height: 100vh;
-    background-color: #ffcc00;
+    height: 100%;
 `
 
 
@@ -59,6 +58,7 @@ const Pokedex = () => {
             </div>
             
             <CardPokeList/>
+            
             </Container>
         </ContainerPokedex>
     )

@@ -6,8 +6,7 @@ import { useNavigate} from 'react-router-dom'
 
 
 const ContainerError = styled.div `
-    height: 100vh;
-    background-color: #ffcc00;`
+    height: 100vh`
 
 const Img = styled.img`
 height: 66vh; 
