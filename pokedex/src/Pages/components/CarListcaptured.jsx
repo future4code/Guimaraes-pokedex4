@@ -6,7 +6,7 @@ import pokeboll from '../../assets/pokeboll.png'
 import styled from "styled-components"
 import DetailPokemonCaptured from './DetailPokemonCaptured'
 import {GoTrashcan} from 'react-icons/go';
-
+import {useGlobalContext} from '../../context'
 const Img = styled.img`
 width: 80px;    
 margin-bottom: -50px;
@@ -24,7 +24,7 @@ animation: spin 2s infinite;
 `
 
 const CardListCaptured = () => {
-
+  const {pokemonsLivres, setPokemonsLivres,guardarPokemon,pokemonsCapturado,excluirPokemon}= useGlobalContext()
 
     const [modalShow, setModalShow] = React.useState(false);
 
@@ -32,7 +32,8 @@ const CardListCaptured = () => {
 
     return(
         <Row className="p-5">
-            <Col className="m-3">
+          {pokemonsCapturado.map((pokemon,indice)=>(
+            <Col className="m-3 mb-5" key={pokemon.id}>
 
             <Card
              style={{ width: '18rem', background: `linear-gradient(190deg, rgba(255,204,0)30%, rgba(197,49,42, 0.80) 100%)`}}
@@ -40,31 +41,43 @@ const CardListCaptured = () => {
             <Card.Header className="border-0 "
             style={{ width: '18rem', background: `rgba(255,204,0)`}}>
                 <p className="text-end">
-                <button className="btn btn-outline-dark">
+                <button className="btn btn-outline-dark" onClick={() => excluirPokemon(indice)}>
                     <GoTrashcan/>
                     </button>
                 </p>
             </Card.Header>
             <Card.Body className=" d-flex flex-column justify-content-center align-items-center">
-            <Card.Title className="text-dark">Nome do Pokemon</Card.Title>
-            <img src="https://www.pngmart.com/files/2/Pikachu-PNG-Transparent-Image.png"
+            
+            
+            <Card.Title className="text-dark">{pokemon.name}</Card.Title>
+            <img src={
+              pokemon && pokemon.sprites.other["official-artwork"].front_default
+            }            
             style={{ width: '10rem' }}
             className="m-2"/>
             </Card.Body>
             <p className="text-center">
-            <a href='#' onClick={() => setModalShow(true)}>
+            <a href='#' onClick={() => setModalShow(pokemon.id)}>
               <Img variant="bottom" src={pokeboll} /></a>
             </p>
 
 
             <DetailPokemonCaptured
-            show={modalShow}
+            pokemonsLivres={pokemonsLivres}
+            pokemon={pokemon}
+            indice={indice}
+            setPokemonsLivres={setPokemonsLivres}
+            guardarPokemon={guardarPokemon}
+            show={pokemon.id === modalShow}
             onHide={() => setModalShow(false)}
             />
             
             </Card>
 
             </Col>
+
+          ))}
+            
         </Row>
 
   
