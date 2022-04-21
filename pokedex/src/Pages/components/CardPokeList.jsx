@@ -39,23 +39,26 @@ const CardPokeList = () => {
         <Row className="p-5">
           {pokemonsLivres.map((pokemon)=>(
 
-            <Col className="m-3" key={pokemon.id}>
+            <Col className="m-3 mb-5" key={pokemon.id}>
             <Card 
              style={{ width: '18rem', background: `linear-gradient(190deg, rgba(255,204,0)10%, rgba(197,49,42, 0.80) 100%)`}}
             className=" justify-content-center align-items-center shadow border-0">
             <Card.Body>
-            <Card.Title className="text-dark">{pokemon.name}</Card.Title>
+            <Card.Title className="text-center">
+              <small className="text-muted">#00{pokemon.id}
+              </small>
+              </Card.Title>
             <img src={
               pokemon && pokemon.sprites.other["official-artwork"].front_default
             }
             style={{ width: '10rem' }}
             className="m-2"/>
+             <h3 className="text-dark text-center">{pokemon.name}</h3>
             </Card.Body>
             <p className="text-center">
             <a href='#' onClick={() => setModalShow(true)}>
               <Img variant="bottom" src={pokeboll} /></a>
             </p>
-
 
             <DetailPokemon
             show={modalShow}

@@ -7,10 +7,13 @@ export const useGlobalContext =()=> useContext(GlobalContextApi);
 
 export const GlobalContextProvider=(props)=>{
     const [pokemonsLivres, setPokemonsLivres]=useState([])
+    const [totalPokemon] = useState(807);
+    const [pokemonPerPage] = useState(6);
+    const [currentPage, setCurrentPage] = useState(0);
     // const [detalhesPokemons, setDetalhesPokemons]=useState
     const getArrayPokemons=()=>{
         axios
-        .get(`https://pokeapi.co/api/v2/pokemon?limit=30&offset=0`)
+        .get(`https://pokeapi.co/api/v2/pokemon?limit=${pokemonPerPage}&offset=${currentPage}`)
         .then((res)=>{
             res.data.results.forEach(pokemon => {
                 axios.get(pokemon.url)
@@ -23,7 +26,14 @@ export const GlobalContextProvider=(props)=>{
       }
       useEffect(()=>{
         getArrayPokemons()
-      },[])
+      },[currentPage, pokemonPerPage])
+
+      const onPaginationClick = (e, pageInfo) => {
+        setCurrentPage(pageInfo.activePage * pokemonPerPage - pokemonPerPage);
+      };
+    
+      const totalPage = Math.ceil(totalPokemon / pokemonPerPage);
+    
 
     //   const getDetalhesPokemons=()=>{
     //     axios
@@ -38,7 +48,7 @@ export const GlobalContextProvider=(props)=>{
     //   },[])
       return (
         <GlobalContextApi.Provider value={{pokemonsLivres,
-            setPokemonsLivres,
+            setPokemonsLivres,  totalPage
             }}>
           {props.children}
         </GlobalContextApi.Provider>
