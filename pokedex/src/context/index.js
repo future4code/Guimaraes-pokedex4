@@ -1,54 +1,72 @@
 import { createContext,useState,useEffect,useContext } from "react";
 import axios from "axios";
+import React from "react";
 
 
 const GlobalContextApi = createContext();
 export const useGlobalContext =()=> useContext(GlobalContextApi);
 
 export const GlobalContextProvider=(props)=>{
+    const [pokemonsCapturado, setPokemonsCapturado]=useState([])
     const [pokemonsLivres, setPokemonsLivres]=useState([])
-    const [totalPokemon] = useState(807);
-    const [pokemonPerPage] = useState(6);
-    const [currentPage, setCurrentPage] = useState(0);
+    
     // const [detalhesPokemons, setDetalhesPokemons]=useState
     const getArrayPokemons=()=>{
         axios
-        .get(`https://pokeapi.co/api/v2/pokemon?limit=${pokemonPerPage}&offset=${currentPage}`)
+        .get(`https://pokeapi.co/api/v2/pokemon?limit=54&offset=2`)
         .then((res)=>{
-            res.data.results.forEach(pokemon => {
-                axios.get(pokemon.url)
-                .then(res=>{
-                    setPokemonsLivres(listaPokemons => [...listaPokemons,res.data])
-                }) 
+            const promises=res.data.results.map(pokemon => {
+                return axios.get(pokemon.url)
             }); 
+            Promise.allSettled(promises)
+                .then(res=>{
+                    res.map(response=>{
+                        setPokemonsLivres(listaPokemons => {
+                            // Array.from(new Set([...listaPokemons,response.value.data]))
+                            const pokemonExiste=listaPokemons.some((pokemon)=> pokemon.id === response.value.data.id )
+                            if(pokemonExiste){
+                                return listaPokemons;
+                            }else{
+                                return [...listaPokemons,response.value.data];
+                            }
+                        })
+                    })
+                    console.log(res)
+                }) 
         })
         .catch((err)=>console.log((err)))
       }
+
       useEffect(()=>{
         getArrayPokemons()
-      },[currentPage, pokemonPerPage])
+      },[])
 
-      const onPaginationClick = (e, pageInfo) => {
-        setCurrentPage(pageInfo.activePage * pokemonPerPage - pokemonPerPage);
-      };
-    
-      const totalPage = Math.ceil(totalPokemon / pokemonPerPage);
-    
+    //const onClickPagination = (e, value) => setNumberPage(value-1);
 
-    //   const getDetalhesPokemons=()=>{
-    //     axios
-    //     .get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
-    //     .then((res)=>{
-    //         setDetalhesPokemons(res.data.results)
-    //     })
-    //     .catch((err)=>console.log((err)))
-    //   }
-    //   useEffect(()=>{
-    //     getDetalhesPokemons()
-    //   },[])
+    const guardarPokemon= (indice)=>{
+        const copiaPokemonsLivres= [...pokemonsLivres]
+        const pokemonsRemovidos= copiaPokemonsLivres.splice(indice,1)
+        setPokemonsCapturado([...pokemonsCapturado, ...pokemonsRemovidos])
+        setPokemonsLivres(copiaPokemonsLivres)
+        
+    }
+    const excluirPokemon=(indice)=>{
+        const copiaPokemonsCapturados=[...pokemonsCapturado]
+        const pokemonsExcluidos= copiaPokemonsCapturados.splice(indice,1)
+        setPokemonsLivres([...pokemonsLivres, ...pokemonsExcluidos])
+        setPokemonsCapturado(copiaPokemonsCapturados)
+    }
+
+    console.log(pokemonsCapturado)
       return (
-        <GlobalContextApi.Provider value={{pokemonsLivres,
-            setPokemonsLivres,  totalPage
+       
+        <GlobalContextApi.Provider value={{
+            pokemonsLivres,
+            setPokemonsLivres, 
+            guardarPokemon,
+            pokemonsCapturado,
+            excluirPokemon,
+
             }}>
           {props.children}
         </GlobalContextApi.Provider>

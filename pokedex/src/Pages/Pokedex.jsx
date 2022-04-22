@@ -7,9 +7,8 @@ import { useNavigate } from 'react-router-dom'
 import { AiFillHome } from 'react-icons/ai';
 import { CgPokemon} from 'react-icons/cg';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
-import { useContext } from 'react'
-import axios from 'axios'
-import { Pagination } from "semantic-ui-react";
+
+
 
 const ContainerPokedex = styled.div `
     height: 100%;
@@ -62,9 +61,6 @@ const Pokedex = () => {
             </div>
              <CardPokeList/>
             
-            </Container>
-            <Container>
-            <Pagination />
             </Container>
             
         </ContainerPokedex>
