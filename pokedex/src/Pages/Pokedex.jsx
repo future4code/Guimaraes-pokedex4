@@ -7,17 +7,17 @@ import { useNavigate } from 'react-router-dom'
 import { AiFillHome } from 'react-icons/ai';
 import { CgPokemon} from 'react-icons/cg';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
-import { useContext } from 'react'
-import axios from 'axios'
+
+
 
 const ContainerPokedex = styled.div `
-    height: 100vh;
+    height: 100%;
     background-color: #ffcc00;
 `
 
 
-
 const Pokedex = () => {
+    
     
     const navigate = useNavigate()
     const goToPokemonSaved = () => {
@@ -59,9 +59,10 @@ const Pokedex = () => {
             </OverlayTrigger>
     
             </div>
+             <CardPokeList/>
             
-            <CardPokeList/>
             </Container>
+            
         </ContainerPokedex>
     )
 }

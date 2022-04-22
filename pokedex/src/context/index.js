@@ -1,5 +1,6 @@
 import { createContext,useState,useEffect,useContext } from "react";
 import axios from "axios";
+import React from "react";
 
 
 const GlobalContextApi = createContext();
@@ -8,10 +9,11 @@ export const useGlobalContext =()=> useContext(GlobalContextApi);
 export const GlobalContextProvider=(props)=>{
     const [pokemonsCapturado, setPokemonsCapturado]=useState([])
     const [pokemonsLivres, setPokemonsLivres]=useState([])
-
+    
+    // const [detalhesPokemons, setDetalhesPokemons]=useState
     const getArrayPokemons=()=>{
         axios
-        .get(`https://pokeapi.co/api/v2/pokemon?limit=30&offset=0`)
+        .get(`https://pokeapi.co/api/v2/pokemon?limit=54&offset=2`)
         .then((res)=>{
             const promises=res.data.results.map(pokemon => {
                 return axios.get(pokemon.url)
@@ -39,6 +41,8 @@ export const GlobalContextProvider=(props)=>{
         getArrayPokemons()
       },[])
 
+    //const onClickPagination = (e, value) => setNumberPage(value-1);
+
     const guardarPokemon= (indice)=>{
         const copiaPokemonsLivres= [...pokemonsLivres]
         const pokemonsRemovidos= copiaPokemonsLivres.splice(indice,1)
@@ -55,12 +59,14 @@ export const GlobalContextProvider=(props)=>{
 
     console.log(pokemonsCapturado)
       return (
+       
         <GlobalContextApi.Provider value={{
             pokemonsLivres,
             setPokemonsLivres, 
             guardarPokemon,
             pokemonsCapturado,
-            excluirPokemon
+            excluirPokemon,
+
             }}>
           {props.children}
         </GlobalContextApi.Provider>
